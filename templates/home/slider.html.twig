@@ -1,0 +1,44 @@
+<!--trend-->
+<div class="trend wow zoomIn animated" data-wow-delay=".5s">
+    <div class="container">
+        <div class="trend-info">
+            <section class="slider grid">
+                <div class="flexslider trend-slider">
+                    <ul class="slides">
+                        {% for rs in slider %}
+                        <li>
+                            <div class="col-md-5 trend-left">
+                                <a href="{{ path('note_show', {'id': rs.id}) }}">
+                                <img src="{{ asset('uploads/images/'~ rs.image ) }}"  style="height: 200px; width: 300px" alt=""/>
+                                </a>
+                            </div>
+                            <div class="col-md-7 trend-right">
+                                <h4>{{rs.title}} <span>FOR YOU</span></h4>
+                                <p>{{ rs.description }}</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+
+                        {% endfor %}
+
+                    <!--FlexSlider-->
+                    <script defer src="{{ asset('assets') }}/site/js/jquery.flexslider.js"></script>
+                    <script type="text/javascript">
+                        $(window).load(function(){
+                            $('.flexslider').flexslider({
+                                animation: "pagination",
+                                start: function(slider){
+                                    $('body').removeClass('loading');
+                                }
+                            });
+                        });
+                    </script>
+                    <!--End-slider-script-->
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!--//trend-->

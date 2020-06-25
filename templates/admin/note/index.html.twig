@@ -1,0 +1,87 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit Notes{% endblock %}
+
+{% block body %}
+    <!--JavaScript-->
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin( windowURL, windowName, windowFeatures) {
+            window.open(windowURL,windowName,windowFeatures);
+        }
+    </SCRIPT>
+
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="/admin">Home</a></li>
+                        <li><i class="fa fa-bars"></i>Notes</li>
+                        <li><i class="fa fa-square-o"></i>Note List</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- page start-->
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Keywords</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Added_by</th>
+                    <th>Added_note</th>
+                    <th>Star</th>
+                    <th>I.Gallery</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for note in notes %}
+                    <tr>
+                        <td>{{ note.id }}</td>
+                        <td>{{ note.title }}</td>
+                        <td>{{ note.keywords }}</td>
+                        <td>{{ note.description }}</td>
+
+
+                        <td><img src="{{ asset('uploads/images/'~note.image) }}" height="50"></td>
+
+
+                        <td>{{ note.addedBy }}</td>
+                        <td>{{ note.addedNote }}</td>
+                        <td>{{ note.star }}</td>
+
+
+                        <td>
+                            <a href="javascript:openWin('{{ path('admin_image_new',{'id':note.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=50,left=100,menuBar=no,scrollBars=yes,resizable=no,width=900,height=700');">
+                                <img src="{{ asset('assets/admin/img') }}/gallery.png" height="40">
+                            </a>
+                        </td>
+
+                        <td>{{ note.status }}</td>
+                        <td><a href="{{ path('admin_note_show', {'id': note.id}) }}" class="btn btn-primary" style="width: 70px">Show</a></td>
+                        <td><a href="{{ path('admin_note_edit', {'id': note.id}) }}" class="btn btn-primary" style="width: 70px">Edit</a></td>
+                        <td>{{ include('admin/note/_delete_form.html.twig') }}</td>
+
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="11">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+            <a href="{{ path('admin_note_new') }}" class="btn btn-primary">Create new</a>
+
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+{% endblock %}

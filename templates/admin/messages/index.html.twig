@@ -1,0 +1,69 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block body %}
+
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="/admin">Home</a></li>
+                        <li><i class="fa fa-bars"></i>Pages</li>
+                        <li><i class="fa fa-square-o"></i>Pages</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- page start-->
+
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Ip</th>
+                    <th>Anote</th>
+                    <th>Created_at</th>
+                    <th>Updated_at</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for message in messages %}
+                    <tr>
+                        <td>{{ message.id }}</td>
+                        <td>{{ message.name }}</td>
+                        <td>{{ message.subject }}</td>
+                        <td>{{ message.message }}</td>
+                        <td>{{ message.status }}</td>
+                        <td>{{ message.ip }}</td>
+                        <td>{{ message.anote }}</td>
+                        <td>{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>{{ message.updatedAt ? message.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <a href="{{ path('admin_messages_show', {'id': message.id}) }}" class="btn btn-primary">show</a> </td>
+                        <td><a href="{{ path('admin_messages_edit', {'id': message.id}) }}" class="btn btn-primary">edit</a></td>
+                        <td>{{ include('admin/messages/_delete_form.html.twig') }}</td>
+
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="10">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+
+{% endblock %}

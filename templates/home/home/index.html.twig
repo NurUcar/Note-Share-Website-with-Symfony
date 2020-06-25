@@ -1,0 +1,70 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ setting[0].title }}{% endblock %}
+{% block keywords %}{{ setting[0].keywords }}{% endblock %}
+{% block description %}{{ setting[0].description }}{% endblock %}
+
+
+{% block body %}
+    {% include('home/slider.html.twig') %}
+    <!--new-->
+    <div class="new">
+        <div class="container">
+            <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
+                <h3 class="title">New <span>Notes</span></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur </p>
+            </div>
+            <div class="new-info">
+                {% for note in newnotes %}
+                <div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" style="margin-left: 10px;margin-bottom: 10px" data-wow-delay=".5s">
+
+                        <div class="new-top"  style="height: 300px; width: 300px">
+                            <img src="{{ asset('uploads/images/'~ note.image ) }}"  alt=""/>
+                            <div class="new-text" style="height: 210px; width: 200px;">
+                                <ul style="margin-top: 45px">
+                                  <li><a href="{{ path('note_show', {'id':note.id}) }}">Show Details </a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+                </div>
+                {% endfor %}
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!--//new-->
+    <!--gallery-->
+    <div class="gallery">
+        <div class="container">
+            <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
+                <h3 class="title">All <span>Notes</span></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur </p>
+            </div>
+            {% for note in notes %}
+                <div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" style="margin-left: 10px;margin-bottom: 10px" data-wow-delay=".5s">
+
+                    <div class="new-top"  style="height: 300px; width: 300px">
+                        <img src="{{ asset('uploads/images/'~ note.image ) }}"  alt=""/>
+                        <div class="new-text" style="height: 210px; width: 200px;">
+                            <ul style="margin-top: 45px">
+                                <li><a href="{{ path('note_show', {'id':note.id}) }}">Show Details </a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            {% endfor %}
+
+            <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--//gallery-->
+
+{% endblock %}

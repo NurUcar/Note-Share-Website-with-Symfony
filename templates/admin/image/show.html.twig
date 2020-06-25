@@ -1,0 +1,45 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Image{% endblock %}
+{% block body %}
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="/admin">Home</a></li>
+                        <li><i class="fa fa-bars"></i>Notes</li>
+                        <li><i class="fa fa-square-o"></i>Edit Entity Detail</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- page start-->
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ image.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ image.title }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td>{{ image.image }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <a href="{{ path('admin_image_index') }}">back to list</a>
+
+            <a href="{{ path('admin_image_edit', {'id': image.id}) }}">edit</a>
+
+            {{ include('admin/image/_delete_form.html.twig') }}
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+{% endblock %}

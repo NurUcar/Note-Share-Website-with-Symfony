@@ -1,0 +1,73 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+
+
+<h1><p style="margin-left: 225px; margin-top: 25px;  " >NOTE DETAIL</p></h1>
+<div style=" width: 1450px; height: 600px; margin-top: 10px;margin-left: 35px; margin-bottom: 15px">
+    {{ include('user/usermenu.html.twig') }}
+
+    <div style=" float: left;  width: 1200px; margin-left: 35px">
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ note.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ note.title }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ note.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ note.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ note.image }}</td>
+            </tr>
+            <tr>
+                <th>Star</th>
+                <td>{{ note.star }}</td>
+            </tr>
+            <tr>
+                <th>Added_note</th>
+                <td>{{ note.addedNote }}</td>
+            </tr>
+            <tr>
+                <th>Added_by</th>
+                <td>{{ note.addedBy }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ note.createdAt ? note.createdAt|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ note.updatedAt ? note.updatedAt|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ note.status }}</td>
+            </tr>
+            <tr>
+                <th>Detail</th>
+                <td>{{ note.detail }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ note.userid }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</div>
+{% endblock %}

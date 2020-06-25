@@ -1,0 +1,47 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block body %}
+    <!--contact-->
+    <div class="contact">
+        <div class="container">
+            <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
+                <h3 class="title">How To <span> Contact Us</span></h3>
+
+                <p> </p>
+            </div>
+        </div>
+    </div>
+    <div class="address"><!--address-->
+        <div class="container">
+            <div class="address-row">
+                <div class="col-md-6 address-left wow fadeInLeft animated" data-wow-delay=".5s">
+                    <div class="address-grid">
+                        <h4 class="wow fadeIndown animated" data-wow-delay=".5s">DROP US A LINE </h4>
+
+
+
+                        <form role="form" name="messages" method="post">
+                            {{ include('message.html.twig') }}
+                            <input type="text" id="messages_name"  name="messages[name]" class="wow fadeIndown animated" data-wow-delay=".6s" type="text" placeholder="Name" required="">
+                            <input type="text" id="messages_email"  name="messages[email]"  class="wow fadeIndown animated" data-wow-delay=".7s" type="text" placeholder="Email" required="">
+                            <input type="text" id="messages_subject"  name="messages[subject]" class="wow fadeIndown animated" data-wow-delay=".8s" type="text" placeholder="Subject" required="">
+                            <textarea type="text" id="messages_message"  name="messages[message]" class="wow fadeIndown animated" data-wow-delay=".8s" placeholder="Message" required=""></textarea>
+                            <input type="hidden" name="token" value="{{ csrf_token('form-message') }}">
+                            <input class="wow fadeIndown animated" data-wow-delay=".9s" type="submit" value="SEND">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 address-right">
+                    <div class="address-info wow fadeInRight animated" data-wow-delay=".5s">
+                        {{ setting[0].contact|raw }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//contact-->
+
+{% endblock %}

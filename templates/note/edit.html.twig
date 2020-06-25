@@ -1,0 +1,20 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+
+    <h1><p style="margin-left: 210px; margin-top: 25px;  " >EDIT NOTE</p></h1>
+
+    <div style=" width: 1450px; height: 1300px; margin-top: 10px;margin-left: 35px">
+
+        {{ include('user/usermenu.html.twig') }}
+
+
+        <div style=" float: left;  width: 1200px; margin-left: 35px">
+
+
+            {{ include('note/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </div>
+{% endblock %}

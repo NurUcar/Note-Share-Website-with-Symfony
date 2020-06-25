@@ -1,0 +1,68 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}My Notes{% endblock %}
+
+{% block body %}
+    <!--JavaScript-->
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin( windowURL, windowName, windowFeatures) {
+            window.open(windowURL,windowName,windowFeatures);
+        }
+    </SCRIPT>
+    <h1><p style="margin-left: 225px; margin-top: 25px;  " >MY NOTES</p></h1>
+    <div style=" width: 1450px; height: 600px; margin-top: 10px;margin-left: 35px">
+        {{ include('user/usermenu.html.twig') }}
+
+        <div style=" float: left;  width: 1200px; margin-left: 35px">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Keywords</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Added_note</th>
+                    <th>Star</th>
+                    <th>I.Gallery</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for note in notes %}
+                    <tr>
+                        <td>{{ note.id }}</td>
+                        <td>{{ note.title }}</td>
+                        <td>{{ note.keywords }}</td>
+                        <td>{{ note.description }}</td>
+                        <td><img src="{{ asset('uploads/images/'~ note.image ) }}" height="50"></td>
+
+                        <td>{{ note.addedNote }}</td>
+                        <td>{{ note.star }}</td>
+
+
+                        <td>
+                            <a href="javascript:openWin('{{ path('user_image_new',{'id':note.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=50,left=100,menuBar=no,scrollBars=yes,resizable=no,width=900,height=700');">
+                                <img src="{{ asset('assets/admin/img') }}/gallery.png" height="40">
+                            </a>
+                        </td>
+
+                        <td>{{ note.status }}</td>
+                        <td><a href="{{ path('user_note_show', {'id': note.id}) }}" class="btn btn-primary" style="width: 70px">Show</a></td>
+                        <td><a href="{{ path('user_note_edit', {'id': note.id}) }}" class="btn btn-primary" style="width: 70px">Edit</a></td>
+                        <td>{{ include('note/_delete_form.html.twig') }}</td>
+
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="11">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('user_note_new') }}" class="btn btn-primary">Create new</a>
+        </div>
+
+    </div>
+{% endblock %}

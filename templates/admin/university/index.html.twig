@@ -1,0 +1,61 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}University Home Page{% endblock %}
+
+{% block body %}
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="/admin">Home</a></li>
+                        <li><i class="fa fa-bars"></i>University</li>
+                        <li><i class="fa fa-square-o"></i>University List</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- page start-->
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Keywords</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for university in universities %}
+                    <tr>
+                        <td>{{ university.id }}</td>
+                        <td>{{ university.title }}</td>
+                        <td>{{ university.keywords }}</td>
+                        <td>{{ university.description }}</td>
+                        <td><img src="{{ asset('uploads/images/'~university.image) }}" height="50"></td>
+                        <td>{{ university.status }}</td>
+                        <td>
+                           <a href="{{ path('admin_university_show', {'id': university.id}) }}" class="btn btn-primary" style="width: 70px">Show</a></td>
+                        <td>   <a href="{{ path('admin_university_edit', {'id': university.id}) }}" class="btn btn-primary" style="width: 70px">Edit</a></td>
+                        <td>  {{ include('admin/university/_delete_form.html.twig') }}</td>
+
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('admin_university_new') }}" class="btn btn-primary">Create new</a>
+
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+{% endblock %}

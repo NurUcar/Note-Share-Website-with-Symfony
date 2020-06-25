@@ -1,0 +1,16 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+
+    <h1><p style="margin-left: 225px; margin-top: 25px;  " >MY NOTES</p></h1>
+    <div style=" width: 1450px; height: 600px; margin-top: 10px;margin-left: 35px">
+     {{ include('user/usermenu.html.twig') }}
+
+        <div style=" float: left;  width: 1200px; margin-left: 35px">
+
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ note.title }}{% endblock %}
+
+{% block body %}
+
+    <div style=" width: 1450px; height: auto; margin-top: 10px;margin-left: 35px; margin-bottom: 15px">
+
+
+        <!--single-page-->
+        <div class="single" >
+            <div class="container">
+                <div class="single-info">
+
+                    <div class="col-md-6 single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">
+                        <h3>{{ note.title }}</h3>
+                        <div class="single-rating">
+						<span class="starRating">
+							<input id="rating5" type="radio" name="rating" value="5" checked>
+							<label for="rating5">5</label>
+							<input id="rating4" type="radio" name="rating" value="4">
+							<label for="rating4">4</label>
+							<input id="rating3" type="radio" name="rating" value="3">
+							<label for="rating3">3</label>
+							<input id="rating2" type="radio" name="rating" value="2">
+							<label for="rating2">2</label>
+							<input id="rating1" type="radio" name="rating" value="1">
+							<label for="rating1">1</label>
+						</span>
+                            <p>5.00 out of 5</p>
+                            <a href="#">Add Your Review</a>
+                        </div>
+
+                        <p>{{ note.description }}</p>
+
+                        <div class="clearfix">
+                            <p>{{ note.detail | raw}}</p>
+                        </div>
+
+                        <div class="btn_form">
+                            <a href="#" class="add-cart item_add">DOWNLOAD</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <!--collapse-tabs-->
+                <div class="collpse tabs">
+                    <div class="panel-group collpse" id="accordion" role="tablist" aria-multiselectable="true">
+
+
+                        <div class="panel panel-default wow fadeInUp animated" data-wow-delay=".7s">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        reviews
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--//collapse -->
+        </div>
+    </div>
+
+
+
+{% endblock %}
